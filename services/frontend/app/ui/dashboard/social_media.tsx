@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 
 export default function Socials() {
     return (
-        <div className="bg-white shadow-lg rounded-lg p-8 flex flex-col w-1/4 h-fit">
+        <div className="bg-white shadow-lg rounded-lg p-8 flex flex-col w-full lg:w-1/4 h-auto ">
             <Image src={`${CADDY_URL}/image?opt=avatar`} width={200} height={200} alt="Photo of me" className="rounded-xl mb-4 self-center" />
             <h3 className="text-blue-700 font-bold py-5 text-xl underline underline-offset-4">Socials</h3>
             <motion.div className="flex flex-row w-full mb-5" whileHover={{ scale: 1.1, translateX: 10 }}>
