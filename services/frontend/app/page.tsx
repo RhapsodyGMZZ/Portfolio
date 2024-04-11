@@ -8,7 +8,7 @@ export default function Page() {
         <h1 className="text-blue-500 text-center font-bold p-3">
           Welcome on my Portfolio !
         </h1>
-        <p className="text-blue-500 text-center p-3 font-medium hover:text-blue-300">Welcome to my portfolio, this will be updated each time I make a project which I think is worth to be there.</p>
+        <p className="text-black text-center p-3 font-medium">Welcome to my portfolio, this will be updated each time I make a project which I think is worth to be there. This portfolio is developed in Next.JS and Tailwind.css for the frontend and the backend is in GO (Golang).</p>
         <div className="flex flex-row justify-center items-center w-full p-5 mt-2">
         <Link href={"/dashboard"} className={LINK_STYLE}>Let's explore</Link>
         </div>

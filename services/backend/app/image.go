@@ -9,8 +9,6 @@ func HandleImage(w http.ResponseWriter, r *http.Request) {
 	}
 	opt := r.URL.Query().Get("opt")
 
-	switch opt {
-	case "avatar":
-		http.ServeFile(w, r, "static/avatar.jpg")
-	}
+	http.ServeFile(w, r, "static/"+opt)
+
 }
