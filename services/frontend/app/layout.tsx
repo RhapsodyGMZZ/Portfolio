@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50`}>
-        {children}
+        <Suspense fallback={<Loading />}>
+          {children}
+        </Suspense>
       </body>
     </html>
   );
