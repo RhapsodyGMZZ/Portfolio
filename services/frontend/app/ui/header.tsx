@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import { CADDY_URL } from "../lib/constants";
 
 export default function Header() {
     return (

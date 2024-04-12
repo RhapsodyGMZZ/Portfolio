@@ -4,6 +4,7 @@ import { LINK_STYLE } from "../lib/constants";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import { ArrowLeftEndOnRectangleIcon } from "@heroicons/react/24/outline";
 
 export default function SideNav() {
     const url = usePathname()
@@ -19,7 +20,9 @@ export default function SideNav() {
                 <Link href={"/projects"} className={LINK_STYLE} onClick={() => { setState("/projects") }}>My projects</Link>
                 : state !== "/projects" ?
                     <>
-                        <Link href={"/projects"} className={LINK_STYLE} onClick={() => { setState("/projects") }}>Return</Link>
+                        <Link href={"/projects"} className={`text-white rounded-lg p-2 w-2/3 text-center break-words my-5 hover:bg-blue-800 bg-black relative`} onClick={() => { setState("/projects") }}>&nbsp;&nbsp;&nbsp;Return
+                        <ArrowLeftEndOnRectangleIcon className={`pointer-events-none absolute left-3 top-1/2 w-6 -translate-y-1/2 ${onclick ? ()=>{return("rotate-90 duration-500")} : ()=>{return("rotate-0 duration-500")} } `} />
+                        </Link>
                         <Link href={"/dashboard"} className={LINK_STYLE} onClick={() => { setState("/dashboard") }}>My resume</Link>
                     </>
                     : <Link href={"/dashboard"} className={LINK_STYLE} onClick={() => { setState("/dashboard") }}>My resume</Link>
