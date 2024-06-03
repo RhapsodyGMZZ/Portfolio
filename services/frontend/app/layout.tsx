@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
-import { AnimatePresence, motion } from "framer-motion";
 import { Suspense } from "react";
 import Loading from "./loading";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "N.Legay's Portfolio",
@@ -19,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-50`}>
+      <body className={`bg-slate-50`}>
         <Suspense fallback={<Loading />}>
           {children}
         </Suspense>

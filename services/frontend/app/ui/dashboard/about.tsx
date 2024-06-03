@@ -7,8 +7,7 @@ export default function About() {
             <h3 className="text-blue-500 font-bold text-xl h-fit mb-8">About me :</h3>
             <p className="text-black text-md">I'm currently studying at Zone01 Normandie to become a <span className="font-bold text-blue-500">full-stack developper</span>.&nbsp;
             <Link href={"https://zone01rouennormandie.org/"} target="_blank" className="hover:font-bold underline underline-offset-4">Zone01</Link> is a 2-years training program
-            where you need to achieve 55+ projects in differents languages like C, C++, Go, JavaScript, Rust... And it's leading the trainee to a job promise at 
-            the end of the program.
+            during which you need to complete 55+ projects in differents languages like C, C++, Go, JavaScript, Rust... 
             </p>
         </motion.div>
     )
