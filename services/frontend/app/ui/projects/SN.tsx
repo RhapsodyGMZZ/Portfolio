@@ -1,6 +1,6 @@
 "use client"
 import { CADDY_URL, CONTAINER, ITEM } from "@app/lib/constants"
-import { ArrowDownIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
+import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"

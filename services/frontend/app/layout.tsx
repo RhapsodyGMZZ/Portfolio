@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AnimatePresence, motion } from "framer-motion";
 import { Suspense } from "react";
 import Loading from "./loading";
 
