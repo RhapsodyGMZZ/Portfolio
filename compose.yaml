@@ -1,0 +1,46 @@
+services:
+  backend:
+    build:
+      context: ./services/backend
+    restart: on-failure
+    volumes:
+      - ./services/backend:/app
+    expose:
+      - "8080"
+    networks:
+      - global-network
+
+  frontend:
+    build:
+      context: ./services/frontend
+    restart: on-failure
+    volumes:
+      - app:/app
+    expose:
+      - "3000"
+    depends_on:
+      - backend
+    networks:
+      - global-network
+
+  caddy:
+    image: caddy:2-alpine
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - 80:80  # Needed for the ACME HTTP-01 challenge.
+      - 443:443
+      - 443:443/udp
+      - "8000:8000"
+    restart: on-failure
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - global-network
+volumes:
+  app:
+    name: "app"
+
+networks:
+  global-network:
