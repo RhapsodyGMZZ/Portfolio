@@ -2,42 +2,25 @@ services:
   backend:
     build:
       context: ./services/backend
-    restart: on-failure
     volumes:
       - ./services/backend:/app
     expose:
       - "8080"
-    networks:
-      - global-network
-
   frontend:
     build:
       context: ./services/frontend
-    restart: on-failure
     volumes:
-      - app:/app
+      - ./services/frontend:/app
     expose:
       - "3000"
     depends_on:
       - backend
-    networks:
-      - global-network
-
   caddy:
     image: caddy:2-alpine
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
     ports:
-      - 8000:8000
-    restart: on-failure
+      - "8000:8000"
     depends_on:
       - backend
       - frontend
-    networks:
-      - global-network
-volumes:
-  app:
-    name: "app"
-
-networks:
-  global-network:

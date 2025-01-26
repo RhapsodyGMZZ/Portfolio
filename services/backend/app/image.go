@@ -1,6 +1,8 @@
 package handlers
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func HandleImage(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
@@ -8,7 +10,5 @@ func HandleImage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	opt := r.URL.Query().Get("opt")
-
 	http.ServeFile(w, r, "static/"+opt)
-
 }

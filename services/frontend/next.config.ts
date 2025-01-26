@@ -8,7 +8,13 @@ const nextConfig: NextConfig = {
         }
     },
     images: {
-        domains: ["localhost"],
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: 'caddy',
+                port: "8000",
+            },
+        ],
     }
 };
 

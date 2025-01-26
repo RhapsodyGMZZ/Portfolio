@@ -10,7 +10,9 @@ RUN npm install
 
 COPY . .
 
-RUN npx next build
+# RUN npx next build
 
-CMD ["npx","next","start"] 
-# CMD ["npx","next","dev"] 
+# CMD ["npx","next","start"] 
+EXPOSE 3000
+
+CMD ["npm","run","dev"] 
