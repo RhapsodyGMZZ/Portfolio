@@ -3,7 +3,8 @@ FROM node:21-alpine3.18
 WORKDIR /app
 
 COPY package*.json ./
-
+# To allow images
+COPY next.config.ts ./ 
 
 RUN npm install
 
