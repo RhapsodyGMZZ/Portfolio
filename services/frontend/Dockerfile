@@ -13,3 +13,4 @@ COPY . .
 RUN npx next build
 
 CMD ["npx","next","start"] 
+# CMD ["npx","next","dev"] 

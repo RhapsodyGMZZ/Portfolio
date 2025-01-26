@@ -8,14 +8,7 @@ const nextConfig: NextConfig = {
         }
     },
     images: {
-        remotePatterns: [
-            {
-                protocol: 'http',
-                hostname: 'localhost',
-                port: '',
-                pathname:"/api/image/*"
-            },
-        ],
+        domains: ["localhost"],
     }
 };
 
