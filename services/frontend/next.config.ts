@@ -4,15 +4,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
     experimental: {
         serverActions: {
-            allowedOrigins: ['localhost']
+            allowedOrigins: ['localhost', 'nicolas-legay.tech']
         }
     },
     images: {
         remotePatterns: [
             {
-                protocol: 'http',
-                hostname: 'caddy',
-                port: "8000",
+                protocol: 'https',
+                hostname: 'nicolas-legay.tech',
             },
         ],
     }

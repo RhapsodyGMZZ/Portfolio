@@ -1,5 +1,5 @@
 import { ITEM } from "@app/lib/constants";
-import { COriginal, CplusplusOriginal, DjangoPlainWordmark, DockerOriginalWordmark, FlaskOriginalWordmark, GoOriginalWordmark, JavascriptOriginal, KubernetesLineWordmark, KubernetesOriginalWordmark, MysqlOriginal, MysqlOriginalWordmark, NextjsOriginal, NextjsOriginalWordmark, PostgresqlOriginalWordmark, PythonOriginalWordmark, RabbitmqOriginalWordmark, ReactOriginal, ReactOriginalWordmark, RustOriginal, SqliteOriginalWordmark, TypescriptOriginal, VagrantOriginalWordmark } from "devicons-react";
+import { COriginal, CplusplusOriginal, DjangoPlainWordmark, DockerOriginalWordmark, FlaskOriginalWordmark, GoOriginalWordmark, JavascriptOriginal, KubernetesOriginalWordmark, MysqlOriginalWordmark, NextjsOriginalWordmark, PostgresqlOriginalWordmark, PythonOriginalWordmark, RabbitmqOriginalWordmark, ReactOriginalWordmark, RustOriginal, TypescriptOriginal, VagrantOriginalWordmark } from "devicons-react";
 import {motion} from "framer-motion"
 export default function Skills() {
     return (

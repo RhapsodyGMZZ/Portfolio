@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: backend
     build:
       context: ./services/backend
     volumes:
@@ -7,6 +8,7 @@ services:
     expose:
       - "8080"
   frontend:
+    container_name: frontend
     build:
       context: ./services/frontend
     volumes:
@@ -16,11 +18,15 @@ services:
     depends_on:
       - backend
   caddy:
+    container_name: caddy
     image: caddy:2-alpine
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
     ports:
-      - "8000:8000"
+    #  - "8000:8000"
+      - "80:80"
+      - "443:443"
+      - "443:443/tcp"
     depends_on:
       - backend
       - frontend

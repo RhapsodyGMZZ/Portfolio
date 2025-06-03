@@ -1,4 +1,4 @@
-FROM node:21-alpine3.18
+FROM node:22-alpine3.21
 
 WORKDIR /app
 
@@ -6,13 +6,13 @@ COPY package*.json ./
 # To allow images
 COPY next.config.ts ./ 
 
-RUN npm install
+RUN npm install --loglevel verbose
 
 COPY . .
 
-# RUN npx next build
+RUN npx next build
 
-# CMD ["npx","next","start"] 
 EXPOSE 3000
 
-CMD ["npm","run","dev"] 
+CMD ["npx","next","start"] 
+#CMD ["npm","run","dev"] 
