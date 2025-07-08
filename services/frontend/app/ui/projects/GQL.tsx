@@ -1,5 +1,5 @@
 "use client"
-import { CADDY_URL, CONTAINER, ITEM } from "@app/lib/constants"
+import { IMAGE_CADDY_URL, CONTAINER, ITEM } from "@app/lib/constants"
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import Image from "next/image"
 import { useState } from "react"
@@ -20,7 +20,7 @@ export default function GraphQL() {
                     </button>
                     {authState &&
                         <motion.div variants={ITEM}>
-                            <Image src={`${CADDY_URL}/image?opt=graphQL.png`} alt="login page" className="mb-5 border-2" width={800} height={800} />
+                            <Image src={`${IMAGE_CADDY_URL}/image?opt=graphQL.png`} alt="login page" className="mb-5 border-2" width={800} height={800} />
                         </motion.div>
                     }
                     <button className="relative bg-blue-500 font-semibold text-white p-3 rounded-lg mb-5 w-full lg:w-3/4 hover:bg-blue-700" onClick={() => setHome(!homeState)}>Home page with some infos about my Zone01 platform&apos;s account
@@ -30,8 +30,8 @@ export default function GraphQL() {
                         <>
                             <motion.p variants={ITEM} className="border-blue-500 text-center border p-4 rounded-lg text-black w-3/4 mb-3">As you can see, this is a simple project where you manipulate some data with GraphQL queries.</motion.p>
                             <motion.div variants={ITEM}>
-                                <Image src={`${CADDY_URL}/image?opt=graphql-home.png`} alt="posts page" className="mb-5 border-2" width={800} height={800} />
-                                <Image src={`${CADDY_URL}/image?opt=graph-projects.png`} alt="posts page" className="mb-5 border-2" width={800} height={800} />
+                                <Image src={`${IMAGE_CADDY_URL}/image?opt=graphql-home.png`} alt="posts page" className="mb-5 border-2" width={800} height={800} />
+                                <Image src={`${IMAGE_CADDY_URL}/image?opt=graph-projects.png`} alt="posts page" className="mb-5 border-2" width={800} height={800} />
                             </motion.div>
                         </>
                     }

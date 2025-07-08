@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { LINK_STYLE } from "./lib/constants";
+import { LINK_STYLE } from "@app/lib/constants";
+
 
 export default function Page() {
   return (

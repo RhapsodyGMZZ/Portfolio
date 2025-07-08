@@ -11,7 +11,11 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'nicolas-legay.tech',
+                hostname: 'nicolas-legay.fr',
+            },
+            {
+                protocol: 'http',
+                hostname: 'caddy',
             },
         ],
     }

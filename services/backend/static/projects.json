@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Rust Rocket Web API GitHub Template",
+        "projects-page": {
+            "short-description": "This personal project was initially made for me, following a project using Rust's framework named Rocket. It took hours and hours to build an efficient, well-structured, properly coded project. So I decided to create this template for myself and those who want to create an API using Rocket.",
+            "description-img": "rocket-desc.png"
+        },
+        "entire-page": {
+            "main-points": [
+                {
+                    "title": "Backend and Frontend Language Choice.",
+                    "description_1": "First of all, all the backend is written in Rust (obviously). The frontend can be whatever you prefer (vanilla or frameworks), but I decided to implement vanilla HTML, CSS and JS to not restrict any frontend possibilities. It uses the <strong>Tera templating language</strong> to dynamically render your HTML pages with data bound at the page rendering."
+                },
+                {
+                    "title": "Server Configuration and Initialisation",
+                    "description_1": "For the configuration of the server, all sensitive data and variables are stored in the <i>.env</i> file. I voluntarily splitted the .env with the .env.database to simplify the understanding of the next point (Dockerization of the Database). The Rocket framework has the main object Rocket<Build> where we 'mount' routes and base routes. You can also attach to it Fairings that will be triggered at the wanted event. (see in the block below)",
+                    "code_block_1": "// Building the app with the routes mounted\nrocket::build()\n.mount(\"/public\", FileServer::from(\"./static\"))\n.mount(\"/\", routes![home])\n.manage(db) // General context, it can be called mutltiple times while the type is different for each method call\n.attach(cors::CORS) //setting the proper CORS headers as a `fairing` which is triggered at each response sent by the server to send also this CORS headers.\n.attach(Template::fairing())"
+                }
+            ]
+        },
+        "URL": "rocket-api-template"
+    }
+]
