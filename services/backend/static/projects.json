@@ -1,23 +1,286 @@
 [
     {
+        "id": 1,
         "title": "Rust Rocket Web API GitHub Template",
-        "projects-page": {
-            "short-description": "This personal project was initially made for me, following a project using Rust's framework named Rocket. It took hours and hours to build an efficient, well-structured, properly coded project. So I decided to create this template for myself and those who want to create an API using Rocket.",
-            "description-img": "rocket-desc.png"
+        "github_link": "https://github.com/RhapsodyGMZZ/rust_rocket_template",
+        "projects_page": {
+            "short_description": "This personal project was initially made for me, following a project using Rust's framework named Rocket. It took hours and hours to build an efficient, well-structured, properly coded project. So I decided to create this template for myself and those who want to create an API using Rocket.",
+            "description_img": "rocket-desc",
+            "description_img_alt": "Rust rocket's design"
         },
-        "entire-page": {
-            "main-points": [
+        "entire_page": {
+            "main_points": [
                 {
-                    "title": "Backend and Frontend Language Choice.",
-                    "description_1": "First of all, all the backend is written in Rust (obviously). The frontend can be whatever you prefer (vanilla or frameworks), but I decided to implement vanilla HTML, CSS and JS to not restrict any frontend possibilities. It uses the <strong>Tera templating language</strong> to dynamically render your HTML pages with data bound at the page rendering."
+                    "id": 2,
+                    "title": "Installation & Setup",
+                    "details": [
+                        {
+                            "description": "<p>Run <code>docker compose up -d</code> to launch the MySQL container.</p>"
+                        },
+                        {
+                            "description": "<p>Install and use <code>cargo-watch</code> for automatic reload: <code>cargo install cargo-watch --locked && cargo watch -x \"run\"</code>.</p>"
+                        }
+                    ]
                 },
                 {
-                    "title": "Server Configuration and Initialisation",
-                    "description_1": "For the configuration of the server, all sensitive data and variables are stored in the <i>.env</i> file. I voluntarily splitted the .env with the .env.database to simplify the understanding of the next point (Dockerization of the Database). The Rocket framework has the main object Rocket<Build> where we 'mount' routes and base routes. You can also attach to it Fairings that will be triggered at the wanted event. (see in the block below)",
-                    "code_block_1": "// Building the app with the routes mounted\nrocket::build()\n.mount(\"/public\", FileServer::from(\"./static\"))\n.mount(\"/\", routes![home])\n.manage(db) // General context, it can be called mutltiple times while the type is different for each method call\n.attach(cors::CORS) //setting the proper CORS headers as a `fairing` which is triggered at each response sent by the server to send also this CORS headers.\n.attach(Template::fairing())"
+                    "id": 3,
+                    "title": "Environment Variables Configuration",
+                    "details": [
+                        {
+                            "description": "<p>Sensitive variables are stored in <i>.env</i> (generic configuration) and <i>backend/.env.database</i> (database).</p>"
+                        },
+                        {
+                            "description": "<p>Variable examples:<ul><li><code>MYSQL_USER</code>: username</li><li><code>MYSQL_PASSWORD</code>: password</li><li><code>MYSQL_DATABASE</code>: database name</li><li><code>MYSQL_ROOT_PASSWORD</code>: root password</li></ul></p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Dockerization & Database Setup",
+                    "details": [
+                        {
+                            "description": "<p>The <code>compose.yaml</code> file configures a MySQL 8.0 service with persistent volume and healthcheck.</p>",
+                            "image": "compose_yaml_rocket",
+                            "image_alt": "YAML configuration file for docker compose"
+                        },
+                        {
+                            "description": "<p>The connection uses <strong>sqlx</strong> with a pool of 10 connections, and unapplied migrations are automatically launched at startup.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Server Initialization & Routing",
+                    "details": [
+                        {
+                            "description": "<p>In <code>main.rs</code>, we:</p><ul><li>load the <i>.env</i> and <i>.env.database</i> files</li><li>open the connection with <code>database::open()</code></li><li>apply migrations via <code>database::init_db()</code></li><li>mount:</li><ul><li><code>FileServer</code> on <code>/public</code></li><li>the <code>/</code> route defined in <code>routes/home.rs</code></li></ul></ul></p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "title": "Templating & Static Files",
+                    "details": [
+                        {
+                            "description": "<p>Templating is handled by <strong>rocket_dyn_templates</strong> with Tera. Templates are in <code>backend/templates/</code> (<code>base.html.tera</code> + specific pages).</p>"
+                        },
+                        {
+                            "description": "<p>Static assets (CSS, images) are served from <code>backend/static/</code> via the <code>/public</code> route.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "title": "CORS Fairing",
+                    "details": [
+                        {
+                            "description": "<p>The <code>CORS</code> struct implements a Rocket <em>fairing</em> that automatically adds <code>Access-Control-Allow-*</code> headers to authorize cross-origin requests.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "title": "Database Migration and Custom Responses",
+                    "details": [
+                        {
+                            "description": "<p>SQL migrations are located in <code>backend/migrations/</code> and define the <code>USER</code> table.</p>"
+                        },
+                        {
+                            "description": "<p>The <code>models/response.rs</code> module provides the <code>CustomResponse</code> type to structure JSON responses, handle headers and cookies.</p>",
+                            "image": "custom_response_rs",
+                            "image_alt": "The CustomResponse object written in Rust"
+                        },
+                        {
+                            "description": "<p>Implementation of the CustomResponse object with Rocket's <i>Responder</i> trait.</p>",
+                            "image": "impl_responder",
+                            "image_alt": "Implementation of the CustomResponse object with Rocket's Responder trait. Written in Rust."
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "title": "Project Structure",
+                    "details": [
+                        {
+                            "description": "<p>Main directory structure:<ul><li><code>backend/</code>: Rust code, templates, assets, migrations</li><li><code>compose.yaml</code>: Docker configuration</li><li><code>.env</code> and <code>backend/.env.database</code>: environment variables</li></ul></p>"
+                        }
+                    ]
                 }
             ]
         },
-        "URL": "rocket-api-template"
+        "style": {
+            "color_code": "blue-500",
+            "color_code_hover": "blue-700"
+        }
+    },
+    {
+        "id": 2,
+        "title": "Minimal C HTTP Web Server",
+        "github_link": "https://github.com/RhapsodyGMZZ/webserver_in_c",
+        "projects_page": {
+            "short_description": "A simple HTTP web server implemented in C, demonstrating socket programming, HTTP/1.1 parsing, static file serving and basic GET/POST routing with form handling.",
+            "description_img": "webserver_coded",
+            "description_img_alt": "C language logo"
+        },
+        "entire_page": {
+            "main_points": [
+                {
+                    "id": 2,
+                    "title": "Build & Run",
+                    "details": [
+                        {
+                            "description": "<p>Compile and launch the server with <code>make</code>, then run the binary: <code>./bin/web_server</code>.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Code Structure",
+                    "details": [
+                        {
+                            "description": "<p>Organisation:</p><ul><li><code>main.c</code>: point d’entrée, socket init et boucle d’accept.</li><li><code>server/</code>: écoute et routage (<code>server.c</code>), handlers GET/POST (<code>handler.c</code>), rendu HTML (<code>html_renderer.c</code>).</li><li><code>utils/</code>: parsing HTTP et formulaire (<code>parser.c</code>), génération de réponses HTTP (<code>response.c</code>).</li><li><code>static/</code>: fichiers HTML, CSS, JS (ex. <code>home.html</code>).</li></ul></p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "HTTP Response Utility",
+                    "details": [
+                        {
+                            "description": "<p>La fonction <code>http_response</code> assemble le status line, les en-têtes <code>Content-Type</code> et <code>Content-Length</code>, puis le corps de la réponse. Supporte les codes 200, 400, 404, 500, etc.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Routing Logic",
+                    "details": [
+                        {
+                            "description": "<p>Dans <code>server.c</code>, <code>listener</code> accepte les connexions, lit la requête, identifie la méthode (GET/POST) et extrait le chemin avec <code>strtok</code>, puis délègue à <code>handle_routes_get</code> ou <code>handle_routes_post</code>.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "title": "Request Parsing & Form Handling",
+                    "details": [
+                        {
+                            "description": "<p>Le parser dans <code>utils/parser.c</code> décode l’URL encoding du corps POST pour extraire <code>name</code>, <code>email</code> et <code>message</code> dans une structure <code>test_form</code>.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "title": "Static File Rendering",
+                    "details": [
+                        {
+                            "description": "<p>La fonction <code>render</code> (dans <code>server/html_renderer.c</code>) ouvre et lit un fichier du dossier <code>static/</code>, retourne son contenu ou une erreur 500 si échec.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 8,
+                    "title": "Form Submission Endpoint",
+                    "details": [
+                        {
+                            "description": "<p>Le handler POST gère la route <code>/submit</code>, parse le formulaire, génère une réponse JSON via <code>http_response</code> et libère la mémoire.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 9,
+                    "title": "Project Structure",
+                    "details": [
+                        {
+                            "description": "<p>Arborescence principale :<ul><li><code>main.c</code>, <code>header.h</code></li><li><code>server/</code>, <code>utils/</code>, <code>static/</code></li><li><code>Makefile</code> et <code>bin/web_server</code>.</li></ul></p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        "style": {
+            "color_code": "green-500",
+            "color_code_hover": "green-700"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Raytracing in Rust",
+        "github_link": "https://github.com/RhapsodyGMZZ/Raytracing_in_Rust",
+        "projects_page": {
+            "short_description": "A simple CPU-based path tracer written in Rust, implementing ray-surface interactions, camera models, and scene definitions to render 3D scenes like spheres and the Cornell box.",
+            "description_img": "cornell_mirror_all_shape",
+            "description_img_alt": "Rendered Cornell box with mirror surfaces"
+        },
+        "entire_page": {
+            "main_points": [
+                {
+                    "id": 2,
+                    "title": "Build & Run",
+                    "details": [
+                        {
+                            "description": "<p>Compile the project in release mode: <code>cargo build --release</code></p>"
+                        },
+                        {
+                            "description": "<p>Run and redirect the PPM output to a file: <code>cargo run --release &gt; output.ppm</code></p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "title": "Usage & Scenes Examples",
+                    "details": [
+                        {
+                            "description": "<p>In <code>src/main.rs</code>, choose your scene by uncommenting one of the camera setups: <code>cornell_box</code>, <code>spheres</code>, <code>light</code> or <code>testing</code>, then run.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "title": "Rendering Output",
+                    "details": [
+                        {
+                            "description": "<p>The renderer prints a PPM (P3) image to stdout. View it with any compatible image viewer, for example: <code>eog output.ppm</code> on Linux.</p>"
+                        },
+                        {
+                            "description": "<p>The <code>images/cornell_mirror_all_shape.png</code> in the repo shows a sample Cornell box with mirror, glass, and diffuse materials.</p>",
+                            "image": "cornell_mirror_all_shape",
+                            "image_alt": "Cornell box with mirror and diffuse surfaces"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "title": "Code Structure",
+                    "details": [
+                        {
+                            "description": "<p>Organisation:</p><ul><li><code>src/main.rs</code>: entry point and scene selection</li><li><code>src/models/</code>: camera, ray, hittable objects, materials</li><li><code>src/utils/</code>: math utilities and color conversion</li><li><code>images/</code>: example renders</li></ul></p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 6,
+                    "title": "Dependencies",
+                    "details": [
+                        {
+                            "description": "<p>This project uses <code>glam</code> for vector math and <code>rand</code> for random sampling.</p>"
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "title": "Project Structure",
+                    "details": [
+                        {
+                            "description": "<p>Top-level files:<ul><li><code>Cargo.toml</code></li><li><code>src/</code></li><li><code>images/</code></li><li><code>README.md</code></li></ul></p>"
+                        }
+                    ]
+                }
+            ]
+        },
+        "style": {
+            "color_code": "purple-500",
+            "color_code_hover": "purple-700"
+        }
     }
 ]

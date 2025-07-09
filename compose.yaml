@@ -11,7 +11,7 @@ services:
     container_name: frontend
     build:
       context: ./services/frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     volumes:
       - ./services/frontend:/app
     expose:
@@ -24,10 +24,12 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
     ports:
-     - "8000:8000"
-      # - "80:80"
-      # - "443:443"
-      # - "443:443/tcp"
+    #  - "8000:8000"
+      - "80:80"
+      - "443:443"
+      - "443:443/tcp"
     depends_on:
       - backend
       - frontend
+
+
