@@ -26,3 +26,18 @@ export const ITEM = {
         },
     },
 };
+
+export const ITEM_PROJECT = {
+    initial: {
+        opacity: 0,
+        y: -50
+    },
+    animation: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: .6,
+            ease:"easeInOut",
+        },
+    },
+};

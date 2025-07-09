@@ -1,23 +1,36 @@
-export type MainPoint = {
+type Details = {
+    description : string;
+    image?: string;
+    image_alt?: string;
+}
+type MainPoint = {
+    id: number;
     title: string;
-    description_1: string;
-    code_block_1?: string;
+    details: Details[];
 }
 
-export type ProjectsPage = {
-    "short-description": string;
-    "description-img": string;
+type ProjectsPage = {
+    short_description: string;
+    description_img: string;
+    description_img_alt: string;
 }
 
-export type EntirePage = {
-    "main-points": MainPoint[];
+type EntirePage = {
+    main_points: MainPoint[];
 }
 
-export type Project = {
+type ProjectStyle = {
+    color_code: string;
+    color_code_hover: string;
+}
+
+type Project = {
+    id : number;
     title: string;
-    "projects-page": ProjectsPage;
-    "entire-page": EntirePage;
-    "URL" : string
+    github_link:string;
+    projects_page: ProjectsPage;
+    entire_page: EntirePage;
+    style: ProjectStyle;
 }
 
 export type jsonFile = Project[];

@@ -21,6 +21,8 @@ const reducer = (state:any, action:any) => {
     switch (action.type) {
         case actions.setJSONFile:   
             return {...state, json_file: action.payload}
+        default:
+            return state
     }
 }
 

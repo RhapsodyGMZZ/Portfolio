@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react"
 
 export default function ContextLoader() {
     const {setJSONFile} = useContext(Context);
+    const pathname = usePathname();
     
     useEffect(()=> {
         fetch(`${API_BASE_URL}/projects-json`)
@@ -17,7 +18,7 @@ export default function ContextLoader() {
         .catch((err)=> {
             console.dir(err);
         })
-    }, [usePathname()])
+    }, [pathname, setJSONFile])
 
     return ""
 }
