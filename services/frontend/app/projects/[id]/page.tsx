@@ -1,9 +1,8 @@
 "use client";
 import { Context } from "@app/context";
-import { CONTAINER, IMAGE_CADDY_URL, ITEM_PROJECT } from "@app/lib/constants";
+import { CONTAINER, API_BASE_URL, ITEM_PROJECT } from "@app/lib/constants";
 import { GithubOriginal } from "devicons-react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useContext } from "react";
@@ -77,8 +76,8 @@ export default function Page() {
                                                                         {detail.image && (
                                                                             <div className="mt-6 flex justify-center">
                                                                                 <div className="relative overflow-hidden rounded-lg shadow-md">
-                                                                                    <Image
-                                                                                        src={`${IMAGE_CADDY_URL}/image?opt=${detail.image}`}
+                                                                                    <img
+                                                                                        src={`${API_BASE_URL}/image?opt=${detail.image}`}
                                                                                         alt={detail.image_alt || "Project image"}
                                                                                         width={800}
                                                                                         height={800}

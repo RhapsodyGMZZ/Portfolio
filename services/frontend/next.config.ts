@@ -4,21 +4,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
     experimental: {
         serverActions: {
-            allowedOrigins: ['localhost', 'nicolas-legay.tech']
+            allowedOrigins: ['localhost', 'nicolas-legay.fr']
         }
     },
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'nicolas-legay.fr',
-            },
-            {
-                protocol: 'http',
-                hostname: 'caddy',
-            },
-        ],
-    }
 };
 
 export default nextConfig;

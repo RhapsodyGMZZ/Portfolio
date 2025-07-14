@@ -1,6 +1,5 @@
 "use client"
-import Image from "next/image";
-import { IMAGE_CADDY_URL, ITEM } from "@app/lib/constants";
+import { API_BASE_URL, ITEM } from "@app/lib/constants";
 import { SocialIcon } from "react-social-icons";
 import Link from "next/link";
 import { motion } from "framer-motion"
@@ -8,7 +7,7 @@ import { motion } from "framer-motion"
 export default function Socials() {
     return (
         <motion.div variants={ITEM} className="bg-white shadow-lg rounded-lg p-8 flex flex-col w-full lg:w-1/4 h-auto ">
-            <Image src={`${IMAGE_CADDY_URL}/image?opt=avatar.jpg`} width={200} height={200} alt="Photo of me" className="rounded-xl mb-4 self-center" />
+            <img src={`${API_BASE_URL}/image?opt=avatar`} width={200} height={200} alt="Photo of me" className="rounded-xl mb-4 self-center" />
             <h3 className="text-black font-bold py-5 text-xl underline underline-offset-4">Socials</h3>
             <motion.div className="flex flex-row w-full mb-5" whileHover={{ scale: 1.1, translateX: 10 }}>
                 <SocialIcon network="github" style={{ width: 25, height: 25 }} url="https://github.com/RhapsodyGMZZ" />

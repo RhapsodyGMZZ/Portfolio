@@ -1,9 +1,8 @@
 "use client";
 import { Context } from "@app/context";
-import { IMAGE_CADDY_URL, CONTAINER, ITEM } from "@app/lib/constants";
+import { API_BASE_URL, CONTAINER, ITEM } from "@app/lib/constants";
 import { jsonFile } from "@app/lib/definitions";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
@@ -37,8 +36,8 @@ export default function Page() {
                         <p className="text-black p-3">
                             {element.projects_page.short_description}
                         </p>
-                        <Image
-                            src={`${IMAGE_CADDY_URL}/image?opt=${element.projects_page.description_img}`}
+                        <img
+                            src={`${API_BASE_URL}/image?opt=${element.projects_page.description_img}`}
                             alt="image of Rust's rocket framework design"
                             width={1100}
                             height={1100}

@@ -12,8 +12,6 @@ services:
     build:
       context: ./services/frontend
       dockerfile: Dockerfile
-    volumes:
-      - ./services/frontend:/app
     expose:
       - "3000"
     depends_on:
